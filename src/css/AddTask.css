@@ -1,0 +1,145 @@
+.dark-mode .task-button {
+  --main-focus: #2d8cf0;
+  --font-color: #dedede;
+  --bg-color-sub: #222;
+  --bg-color: #323232;
+  --main-color: #dedede;
+  font-size: large;
+  position: absolute;
+  width: 225px;
+  height: 60px;
+  top: 180px;
+  right: 84px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border: 2px solid var(--main-color);
+  box-shadow: 4px 4px var(--main-color);
+  background-color: var(--bg-color);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.dark-mode .task-button,
+.task-button__icon,
+.task-button__text {
+  transition: all 0.3s;
+}
+
+.dark-mode .task-button .task-button__text {
+  transform: translateX(22px);
+  color: var(--font-color);
+  font-weight: 600;
+}
+
+.dark-mode .task-button .task-button__icon {
+  position: absolute;
+  transform: translateX(109px);
+  height: 100%;
+  color: #dedede;
+  width: 60px;
+  background-color: var(--bg-color-sub);
+  display: flex;
+  position: absolute;
+  left: 50px;
+  align-items: center;
+  justify-content: center;
+}
+
+.dark-mode .task-button .svg {
+  width: 20px;
+  fill: var(--main-color);
+}
+
+.dark-mode .task-button:hover {
+  background: var(--bg-color);
+}
+
+.dark-mode .task-button:hover .task-button__text {
+  color: transparent;
+}
+
+.dark-mode .task-button:hover .task-button__icon {
+  width: 220px;
+  left: 0;
+  transform: translateX(0);
+}
+
+.dark-mode .task-button:active {
+  transform: translate(3px, 3px);
+  box-shadow: 0px 0px var(--main-color);
+}
+
+/* here */
+
+.light-mode .task-button {
+  --main-focus: #2d8cf0;
+  --font-color: #323232;
+  --bg-color-sub: #dedede;
+  --bg-color: #eee;
+  --main-color: #323232;
+  font-size: large;
+  position: absolute;
+  width: 225px;
+  height: 60px;
+  top: 180px;
+  right: 84px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border: 2px solid var(--main-color);
+  box-shadow: 4px 4px var(--main-color);
+  background-color: var(--bg-color);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.light-mode .task-button,
+.task-button__icon,
+.task-button__text {
+  transition: all 0.3s;
+}
+
+.light-mode .task-button .task-button__text {
+  transform: translateX(22px);
+  color: var(--font-color);
+  font-weight: 600;
+}
+
+.light-mode .task-button .task-button__icon {
+  position: absolute;
+  transform: translateX(109px);
+  height: 100%;
+  width: 60px;
+  color: #000000;
+  background-color: var(--bg-color-sub);
+  display: flex;
+  position: absolute;
+  left: 50px;
+  align-items: center;
+  justify-content: center;
+}
+
+.light-mode .task-button .svg {
+  width: 20px;
+  fill: var(--main-color);
+}
+
+.light-mode .task-button:hover {
+  background: var(--bg-color);
+}
+
+.light-mode .task-button:hover .task-button__text {
+  color: transparent;
+}
+
+.light-mode .task-button:hover .task-button__icon {
+  width: 220px;
+  left: 0;
+  transform: translateX(0);
+}
+
+.light-mode .task-button:active {
+  transform: translate(3px, 3px);
+  box-shadow: 0px 0px var(--main-color);
+}
