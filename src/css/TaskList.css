@@ -23,14 +23,14 @@
 }
 
 .btn-close {
-    position: relative;
-    top: 4px;
-    left: 30px;
-    display: flex;
-    justify-content: center;
-    align-self:  center;
-    font-size: 12px;
-    margin-left: auto;
+  position: relative;
+  top: 4px;
+  left: 30px;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  font-size: 12px;
+  margin-left: auto;
 }
 
 .list-group-item {
@@ -68,10 +68,10 @@
   top: 180px;
   left: 365px;
   box-shadow: 0 10px 30px rgba(65, 72, 86, 0.05);
-  padding: 30px 50px 30px 50px; 
+  padding: 30px 50px 30px 50px;
 
   align-items: center;
-  justify-items: baseline; 
+  justify-items: baseline;
 }
 
 .dark-mode #checklist {
@@ -89,13 +89,13 @@
   white-space: nowrap;
   border-radius: var(--border-radius);
   position: absolute;
-  top: 180px;
+  top: 230px;
   left: 365px;
   box-shadow: 0 10px 30px rgba(65, 72, 86, 0.05);
-  padding: 30px 50px 30px 50px; 
+  padding: 30px 50px 30px 50px;
 
   align-items: center;
-  justify-items: baseline; 
+  justify-items: baseline;
 }
 
 #checklist label {
@@ -112,6 +112,11 @@
 #checklist label::after {
   content: "";
   position: absolute;
+}
+#checklist :hover {
+  font-size: 25px;
+  color: rgb(166, 89, 255);
+  transition: all 0.5s ease-in;
 }
 
 #checklist label::before {

@@ -1,58 +1,40 @@
+import React from "react";
 import "../css/TaskList.css";
 import { deleteTask, updateTask } from "../services/taskService";
+import { useTasks } from "../Contexts/TaskContext";
 
-interface Task {
-  id: string;
-  task: string;
-  completed: boolean;
-}
+const TaskList = () => {
+  const { tasks, setTasks } = useTasks();
 
-interface TaskListProps {
-  tasks: Task[];
-  setTasks: React.Dispatch<React.SetStateAction<Task[]>>;
-}
-
-const TaskList = ({ tasks, setTasks }: TaskListProps) => {
-  const handleCheckboxChange = (id: string) => {
-    const taskToUpdate = tasks.find((task) => task.id === id);
+  const handleCheckboxChange = (Id: number) => {
+    const taskToUpdate = tasks.find((task) => task.Id === Id);
 
     if (taskToUpdate) {
       const updatedTask = {
         ...taskToUpdate,
-        completed: !taskToUpdate.completed,
+        Completed: !taskToUpdate.Completed,
       };
 
-      const apiTask = {
-        Id: Number(updatedTask.id),
-        Task: updatedTask.task,
-        Completed: updatedTask.completed,
-      };
-
-      console.log("Updating task:", apiTask); 
-
-      updateTask(apiTask)
-        .then((response) => {
-          console.log("Task updated successfully:", response);
+      updateTask({
+        Id: updatedTask.Id,
+        Task: updatedTask.Task,
+        Completed: updatedTask.Completed,
+      })
+        .then(() => {
+          const newTasks = tasks.map((task) =>
+            task.Id === Id ? updatedTask : task
+          );
+          setTasks(newTasks);
         })
         .catch((error) => {
           console.error("Error updating task:", error);
         });
-
-      const newTasks = tasks.map((task) =>
-        task.id === id ? updatedTask : task
-      );
-
-      setTasks(newTasks);
     }
   };
 
-  const handleDelete = async (taskId: string) => {
-    try {
-      await deleteTask(parseInt(taskId, 10));
-    } catch (error) {
-      console.error("Error deleting task:", error);
-    }
-    const newTasks = tasks.filter((task) => task.id !== taskId);
+  const handleDelete = async (taskId: number) => {
+    await deleteTask(taskId);
+    const newTasks = tasks.filter((task) => task.Id !== taskId);
     setTasks(newTasks);
   };
 
@@ -68,29 +50,28 @@ const TaskList = ({ tasks, setTasks }: TaskListProps) => {
           </>
         ) : (
           tasks.map((taskObj) => (
-            <div key={taskObj.id} className="task-item">
+            <div key={taskObj.Id} className="task-item">
               <input
-                id={`task${taskObj.id}`}
+                id={`task${taskObj.Id}`}
                 type="checkbox"
-                name={`task${taskObj.id}`}
-                value={taskObj.id}
-                checked={taskObj.completed}
-                onChange={() => handleCheckboxChange(taskObj.id)}
+                name={`task${taskObj.Id}`}
+                value={taskObj.Id.toString()}
+                checked={taskObj.Completed}
+                onChange={() => handleCheckboxChange(taskObj.Id)}
               />
-              <label htmlFor={`task${taskObj.id}`}>{taskObj.task}</label>
-              {taskObj.completed && (
+              <label htmlFor={`task${taskObj.Id}`}>{taskObj.Task}</label>
+              {taskObj.Completed && (
                 <button
                   type="button"
                   className="btn-close"
                   aria-label="Close"
-                  onClick={() => handleDelete(taskObj.id)}
+                  onClick={() => handleDelete(taskObj.Id)}
                 />
               )}
             </div>
           ))
         )}
       </div>
-
       <div className="socials">
         <a
           className="dribbble"

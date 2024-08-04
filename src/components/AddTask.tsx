@@ -6,6 +6,7 @@ import { createTask } from "../services/taskService";
 interface Props {
   addTask: (task: string) => void;
 }
+
 const AddTask = ({ addTask }: Props) => {
   const [formActive, setFormActive] = useState(false);
   const [task, setTask] = useState("");
